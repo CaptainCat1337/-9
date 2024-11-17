@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digiseller</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="google" content="notranslate" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="norton-safeweb-site-verification" content="qoxrfu0keqsht95-isq4oj87pjddolbaf7bfw2rjq0f5xab2wm1fxaqsyo2uh62xcbzfnku4vjeziiji-seu18is1xhyrxx9kapx-78b25k225wzcnsc5kn2ej7j1qbe" />
+
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico" />
+<link rel="icon" type="image/png" sizes="196x196" href="favicon-196x196.png" />
+<link rel="icon" type="image/png" sizes="128x128" href="favicon-128.png" />
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+<link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+<link rel="stylesheet" type="text/css" href="../css/jquery.qtip.css" />
+<meta name="application-name" content="&nbsp;"/>
+<meta name="msapplication-TileColor" content="#FFFFFF" />
+<meta name="msapplication-TileImage" content="mstile-144x144.png" />
+<meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+<meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+<meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+<meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+<link rel="stylesheet" type="text/css" href="../css/default.css?rnd=20120605" />
+<link rel="stylesheet" type="text/css" href="../cssmin/styles.min.css?rnd=20230123" />
+<link rel="stylesheet" type="text/css" href="../css/swiper.min.css?rnd=20140605" />
+<link rel="stylesheet" type="text/css" href="../css/dd.css?rnd=1234" />
+<link rel="stylesheet" type="text/css" href="../js/select2/css/select2.min.css" />
+<link rel="stylesheet" type="text/css" href="../cssmin/style.min.css?rnd=20240924" />
+<link rel="stylesheet" type="text/css" href="../css/jquery.fancybox.css?rnd=20130228" media="screen" />
+<script type="text/javascript" src="../js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.signalR-2.0.3.min.js"></script>
+<script type="text/javascript" src="../js/jquery.truemodal.js"></script>
+<script type="text/javascript" src="../js/isMobile.min.js"></script>
+<script type="text/javascript" src="../js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="../js/jquery.countdown.min.js"></script>
+<script type="text/javascript" src="../js/jquery.countdown-ru-RU.js"></script>
+<script type="text/javascript" src="../js/jquery.formatDateTime.min.js"></script>
+<script type="text/javascript" src="../js/jquery.dd.min.js"></script>
+<script type="text/javascript" src="../js/select2/js/select2.min.js"></script>
+<script type="text/javascript" src="../js/select2/js/i18n/ru.js"></script>
+<script type="text/javascript" src="../js/jquery.qtip.min.js"></script>
+<script type="text/javascript" src="/js/lang-ru-RU.js?31.01.2014-0"></script>
+<script type="text/javascript" src="../js/info.js" ></script>
+<script type="text/javascript" src="../js/swiper.min.js" ></script>
+<script type="text/javascript" src="../js/clipboard.min.js"></script>
+<script type="text/javascript" src="../js/inv-status.js"></script>
+<style>
+.switchgroup {
+	display: none;
+}
+</style>
+</head> 
+<body>
+<script>
+$(document).ready(function(){
+
+
+	$('.hasTooltip').each(function() { // Notice the .each() loop, discussed below
+	    $(this).qtip({
+	        content: {
+	            text: $(this).next('div') // Use the "div" element next to this for the content
+	        },
+			position: {
+			    target: 'mouse', // Position it where the click was...
+			    adjust: {x:12, y:12},
+			    my: 'top left',
+			    at: 'bottom right'
+		    },
+		    style: {
+				 classes: 'qtip-bootstrap',
+				 tip: {corner: true, mimic: false, width: 8, height: 8, border: true, offset: 0}
+			}
+	    });
+	});
+
+
+	// loader
+    // setTimeout(function(){
+    //   $(".content-loader").fadeOut();
+    // }, 1000);
+	try {$("body select:not('#BankSBP')").msDropDown();} 	        
+		catch(e) {alert(e.message);}	 
+	$('#Lang').msDropDown();
+	$('.fancybox').fancybox();
+	// menu-bobile
+	$('.menu-bobile').click(function(event) {
+        event.preventDefault();	      
+          
+        $('header nav ul').slideToggle( "slow");
+	    $(this).toggleClass('active');   
+	    $('#form_lang, .user_settings').toggleClass('active');     
+	    $('.overlay').toggleClass('show');	        
+    });    
+    function windowSizeSwiper(){
+	    if ($(window).width() <= '768'){
+	        var swiper = new Swiper('.swiper-container', {
+		        slidesPerView: 'auto',
+				freeMode: true,
+				freeModeMinimumVelocity: 0.1,
+				speed: 100,
+				centeredSlides: false,
+				paginationClickable: true,
+				spaceBetween: 10,
+				slidesOffsetAfter: 20
+		    });		
+	    } 
+	    else {
+	    }
+	}
+    $(window).on('load resize',windowSizeSwiper);
+    // menu-bobile end
+
+    $('.user_block').click(function(event) {
+    	$('.user_block div.popup').toggle();
+    });
+    $(document).click(function(e){
+	    if ($(e.target).parents().filter('div.popup:visible').length != 1 && !$(e.target).hasClass('ava')) {
+	        $('div.popup').hide();
+	    }
+	});
+
+// myPopup класс окна popup
+// link-toggle-popup класс ссылки по которому открывается Ваш popup. Если не проверять, то при клике на ссылку окно не появится
+});
+</script>
+
+<div class="container">
+	<div class="row user_settings">		
+		<form id="form_lang" method=POST>
+		<select id="Lang" name="Lang" onchange="ChangeLang($('#Lang').val())">
+			<option value="ru-RU" title="images/flag_RU.png" selected>Russian</option>
+			<option value="en-US" title="images/flag_EN.png" >English</option>
+		</select>
+		</form>
+		<div class="user_block">
+			<span class="ava">
+				avksente177@gmail.com
+				<a class="logout" href="logout.asp?lang=ru-RU"></a>
+				<div class="popup">
+					<header>
+						<span class="user">avksente177@gmail.com</span>
+						
+							<a class="logout" href="logout.asp?lang=ru-RU">Выход</a>
+						
+					</header>
+					<ul>				
+						<li>
+							<a href="../info/purchases.asp?lang=ru-RU">Покупки
+								<span class="oplataTopBtnValue">4</span></span>
+							
+							</a>
+						</li>
+						<li>
+							<a href="../info/promo_codes.asp?lang=ru-RU">Промо-коды
+									<span class="oplataTopBtnValue Grey">0</span></span>
+								
+					        </a>
+						</li>
+						<li>
+							<a href="../info/card_list.asp?lang=ru-RU">Подарочные карты
+									<span class="oplataTopBtnValue Grey">0</span></span>
+								
+							</a>
+						</li>
+					</ul>
+				</div>
+			</span>
+		</div>
+	</div>
+	<header class="row">
+		<h1 class="logo_mobile small-10"><a href="">Oplata.Info</a></h1>
+		<nav class="clearfix column small-2 medium-8">
+			<ul>				
+				<li>
+					<a href="../info/purchases.asp?lang=ru-RU">Покупки
+						<span class="oplataTopBtnValue">4</span></span>
+					
+					</a>
+				</li>
+				<li>
+					<a href="../info/promo_codes.asp?lang=ru-RU">Промо-коды
+							<span class="oplataTopBtnValue Grey">0</span></span>
+						
+			        </a>
+				</li>
+				<li>
+					<a href="../info/card_list.asp?lang=ru-RU">Подарочные карты
+							<span class="oplataTopBtnValue Grey">0</span></span>
+						
+					</a>
+				</li>
+			</ul>
+			<a href="" class="menu-bobile columns"><span></span></a>
+		</nav>	
+		<div class="lang">
+<!-- 			<form id="form_lang" method=POST>
+				<select id="Lang" name="Lang" onchange="ChangeLang($('#Lang').val())">
+					<option value="ru-RU" title="images/flag_RU.png" selected>Russian</option>
+					<option value="en-US" title="images/flag_EN.png" >English</option>
+				</select>
+			</form> -->
+			
+				<h1>Покупки</h1>
+			
+
+			
+			
+		</div>
+		</header>
+		<div class="maindiv">			
+			<div class="innerdiv">
+	<style>
+	@media only screen and (max-width: 768px){
+		.tr_purch {
+		    line-height: 22px;
+		    float: left;
+		    width: 100%;
+		    border: 1px solid #e2e2e2;
+		    margin-bottom: 8px;
+		    position: relative;
+		    padding: 0 15px;
+		    overflow: hidden;
+		}
+		body .general_wrapper .products_table tr td.td_row_date::before, body .order_goods .products_table tr td.td_row_date::before{
+			display: none;
+		}
+		body .general_wrapper .products_table tr td.td_row_uo, body .order_goods .products_table tr td.td_row_uo{
+			position: absolute;
+			left: 15px;
+			bottom: 0;
+			border-bottom-color: #fff;
+		}
+		body .general_wrapper .products_table tr td.td_row_date, body .order_goods .products_table tr td.td_row_date{
+			text-align: right;
+		}	
+	}
+
+	</style>
+	<div class="general_wrapper">
+	
+		    <script>
+		    function nodeCart(id) {
+			    if($('#cart_node_'+id).attr('class')=='node_plus') {
+				    $('#cart_node_'+id).attr('class','node_minus');
+				    $('[id^="cart_'+id+'"]').each(function(){$(this).css('display','table-row')})
+			    } 
+			    else {
+				    $('#cart_node_'+id).attr('class','node_plus');
+				    $('[id^="cart_'+id+'"]').each(function(){$(this).css('display','none')}) 
+			    }
+                return false;
+		    }
+		    </script>
+            
+			
+
+		    
+		    <table class="products_table" cellpadding="0" cellspacing="0" border="0">
+			<thead>
+		    <tr>
+		    <th><span>Название товара</span></th>	
+		    <th><span>Цена</span></th>
+		    <th><span>Дата</span></th>
+		    <th></th>
+		    </tr>
+		    </thead>
+		    
+
+			    <tr class="tr_purch" onclick="window.location='buy.asp?id_i=231363019&lang=ru-RU';">
+			        <td class="td_row_name" data-text='Название товара'><a class=link_goods href="buy.asp?id_i=231363019&lang=ru-RU" title="💎СМЕНА РЕГИОНА СТИМ КАЗАХСТАН/УКРАИНА/ИНДИЯ (FAST)✅">💎СМЕНА РЕГИОНА СТИМ КАЗАХСТАН/УКРАИНА/ИНДИЯ (FAST)✅</a></td>
+			        <td class="td_row_price" data-text='Цена'><span class=row_price>179</span>&nbsp;<span class=row_curr>RUB</span></td>
+			        <td class="td_row_date" data-text='Дата'><span class=row_date>14.11.2024</span></td>
+			        <td class="td_row_uo" data-text='Статус'><a class="fakt_pay_3" href="buy.asp?id_i=231363019&lang=ru-RU" title="Оплачено"><img src="images/fakt_pay_3.png" title="Оплачено" border="0"></a></td>
+			    </tr>
+			    <!--СОДЕРЖАНИЕ КОРЗИНЫ-->  
+			    
+			    <!--/СОДЕРЖАНИЕ КОРЗИНЫ-->
+			    
+
+			    <tr class="tr_purch" onclick="window.location='buy.asp?id_i=219939484&lang=ru-RU';">
+			        <td class="td_row_name" data-text='Название товара'><a class=link_goods href="buy.asp?id_i=219939484&lang=ru-RU" title="Max Payne - steam">Max Payne - steam</a></td>
+			        <td class="td_row_price" data-text='Цена'><span class=row_price>533,93</span>&nbsp;<span class=row_curr>RUB</span></td>
+			        <td class="td_row_date" data-text='Дата'><span class=row_date>19.07.2024</span></td>
+			        <td class="td_row_uo" data-text='Статус'><a class="fakt_pay_3" href="buy.asp?id_i=219939484&lang=ru-RU" title="Оплачено"><img src="images/fakt_pay_3.png" title="Оплачено" border="0"></a></td>
+			    </tr>
+			    <!--СОДЕРЖАНИЕ КОРЗИНЫ-->  
+			    
+			    <!--/СОДЕРЖАНИЕ КОРЗИНЫ-->
+			    
+
+			    <tr class="tr_purch" onclick="window.location='buy.asp?id_i=219395089&lang=ru-RU';">
+			        <td class="td_row_name" data-text='Название товара'><a class=link_goods href="buy.asp?id_i=219395089&lang=ru-RU" title="Max Payne - steam">Max Payne - steam</a></td>
+			        <td class="td_row_price" data-text='Цена'><span class=row_price>533,93</span>&nbsp;<span class=row_curr>RUB</span></td>
+			        <td class="td_row_date" data-text='Дата'><span class=row_date>12.07.2024</span></td>
+			        <td class="td_row_uo" data-text='Статус'><a class="fakt_pay_3" href="buy.asp?id_i=219395089&lang=ru-RU" title="Оплачено"><img src="images/fakt_pay_3.png" title="Оплачено" border="0"></a></td>
+			    </tr>
+			    <!--СОДЕРЖАНИЕ КОРЗИНЫ-->  
+			    
+			    <!--/СОДЕРЖАНИЕ КОРЗИНЫ-->
+			    
+
+			    <tr class="tr_purch" onclick="window.location='buy.asp?id_i=215413236&lang=ru-RU';">
+			        <td class="td_row_name" data-text='Название товара'><a class=link_goods href="buy.asp?id_i=215413236&lang=ru-RU" title="✅Alan Wake 2 + Deluxe ⚫EPIC GAMES (PC)🟢XBOX⚡БЫСТРО +🎁">✅Alan Wake 2 + Deluxe ⚫EPIC GAMES (PC)🟢XBOX⚡БЫСТРО +🎁</a></td>
+			        <td class="td_row_price" data-text='Цена'><span class=row_price>6438,6</span>&nbsp;<span class=row_curr>RUB</span></td>
+			        <td class="td_row_date" data-text='Дата'><span class=row_date>30.05.2024</span></td>
+			        <td class="td_row_uo" data-text='Статус'><a class="fakt_pay_3" href="buy.asp?id_i=215413236&lang=ru-RU" title="Оплачено"><img src="images/fakt_pay_3.png" title="Оплачено" border="0"></a></td>
+			    </tr>
+			    <!--СОДЕРЖАНИЕ КОРЗИНЫ-->  
+			    
+			    <!--/СОДЕРЖАНИЕ КОРЗИНЫ-->
+			    
+		    <tr><td colspan=4 bgcolor="#ffffff" class="pugination"></td></tr>
+		    </table>
+
+            <script>
+			// $('.promo_box').each(function(){  	
+			//  	var promo_text = $(this).text();
+			//  	var textCopy = $('.promo_box span').attr('data-text');
+			//     $(this).append("<button class='clipboard' data-clipboard-text='"+promo_text+"'><span class='mob_hidden'>"+textCopy+"</span><img src='../images/clipboard@2x.png'></button>");       
+			// });
+
+            $(".node_plus").click(function(event) {
+                event.stopPropagation();
+            });
+
+			</script>
+		    
+		    <!--<div class=infodiv>Оплаченные товары хранятся на сервисе до 6 месяцев. Пожалуйста, своевременно сохраняйте у себя (на своем компьютере) информацию о покупках.</div>-->
+		    
+	</div>
+				</div>
+		</div>
+	</div>
+	
+	<footer class="clearfix">	
+		
+		<p>Digiseller — сервис по продаже цифрового контента с моментальной доставкой. <a href="http://digiseller.com/outside/check.asp">Подключиться</a>.</p>		
+		
+		<!--<p><a href="/info/delete_history">Удаление истории покупок</a></p>-->
+		<p>Для удаления истории покупок перейдите по <a href="/info/delete_history">ссылке</a>.</p>
+		<div class="footer_img_wrapper"><img src="images/network_sec.png" alt=""><a href="" class="mobile_icon"><img src="images/networksolution@2x.png" alt=""></a></div>
+	</footer>	
+	 
+</div>
+<div class="overlay"></div>   
+
+</body>
+</html> 
